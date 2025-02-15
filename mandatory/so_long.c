@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:42:54 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 13:36:45 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/15 21:59:52 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 int	handling_keys(int keycode, t_person *per)
 {
 	int	x;
-	int number;
 
-	number = 0;
 	if (keycode == 2 || keycode == 124)
-		ft_right(&per, number);
+		ft_right(&per);
 	else if (keycode == 13 || keycode == 126)
-		ft_upp(&per, number);
+		ft_upp(&per);
 	else if (keycode == 1 || keycode == 125)
-		ft_down(&per, number);
+		ft_down(&per);
 	else if (keycode == 0 || keycode == 123)
-		ft_left(&per, number);
+		ft_left(&per);
 	else if (keycode == 53)
 	{
 		x = 0;

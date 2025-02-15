@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:34:33 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 13:41:04 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/15 22:17:48 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct s_person
 	int				x_person;
 	int				y_person;
 	int				movement;
-	char			**map;
 	int				collect;
+	char			**map;
 	t_enemy         e_vars;
 }           t_person;
 
@@ -75,10 +75,10 @@ int		first_w_lines(char **line);
 void	add_to_map(t_person *per);
 void    image_to_map(char p, int x, int y, t_person **per);
 void    exit_the_dore(t_person ***per);
-void    ft_right(t_person **per, int number);
-void    ft_left(t_person **per, int number);
-void    ft_upp(t_person **per, int number);
-void    ft_down(t_person **per, int number);
+void    ft_right(t_person **per);
+void    ft_left(t_person **per);
+void    ft_upp(t_person **per);
+void    ft_down(t_person **per);
 void	collected(t_person ***per);
 
 #endif
