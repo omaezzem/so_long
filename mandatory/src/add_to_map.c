@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:26:45 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/13 17:38:11 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:05:53 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	add_to_map(t_person *per)
 		x_map = 0;
 		while (per->win_w > 0)
 		{
-			image_to_map(per->map[y_map][x_map], x1, y1, &per);
+			if (per->map && per->map[y_map])
+                image_to_map(per->map[y_map][x_map], x1, y1, &per);
 			x_map++;
 			x1 += 50;
 			per->win_w--;
