@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:06:39 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 22:24:20 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:13:01 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void    image_to_map(char p, int x, int y, t_person **per)
     else if (p == 'C')
     {
         put_image(per, x, y, "./mandatory/xmp/money.xpm");
-        (*per)->collect ++;
+        (*per)->collect++;
     }
     else if (p == 'P')
     {
-        put_image(per, x, y, "./mandatory/xmp/right.xpm");
         (*per)->x_person = x;
         (*per)->y_person = y;
+        put_image(per, x, y, "./mandatory/xmp/right.xpm");
     }
     else if (p == '0')
         put_image(per, x, y, "./mandatory/xmp/floor.xpm");

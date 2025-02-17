@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:51:21 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/13 17:12:21 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:43:56 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,19 @@ void	check_between_walls(t_person **mapw)
 
 void	check_map(t_person *per)
 {
+	int e;
+	int p;
+	int c;
+
+	e = n_ex(per);
+	p = n_pl(per);
+	c = n_co(per);
+	if (e != 1)
+		invalid_map();
+	if (p != 1)
+		invalid_map();
+	if (c < 1)
+		invalid_map();
 	is_rectangular(&per);
 	check_between_walls(&per);
 }

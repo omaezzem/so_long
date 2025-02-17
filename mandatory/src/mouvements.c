@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:17:19 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 23:02:38 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:45:24 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,114 +24,84 @@ void ft_counter_mouv(t_person **per)
 
 void ft_right(t_person **per)
 {
-    int w_img;
-    int h_img;
-    char next_tile;
-    char tile;
+    int next_x;
+    int next_y;
 
-
-    (*per)->movement += 1;
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/floor.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
-    next_tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50 + 1];
-    tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50];
-    if (next_tile == 'E')
+    tfloor(per);
+    (*per)->movement++;
+    next_x = (*per)->x_person / 50 + 1;
+    next_y = (*per)->y_person / 50;
+    if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
+        exit_the_door(&per);
+    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E' )
     {
-        if ((*per)->collect <= 0)
-            exit_the_dore(&per);
-    }
-    else if (next_tile != '1')
-    {
-        (*per)->x_person += 50;
         ft_counter_mouv(per);
+        (*per)->x_person += 50;
     }
-    if (tile == 'C')
+    if ((*per)->map[(*per)->y_person / 50][(*per)->x_person / 50] == 'C')
         collected(&per);
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/right.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
+    id_left_right(per, 1);
 }
-
 
 void ft_left(t_person **per)
 {
-    int w_img;
-    int h_img;
-    char next_tile;
-    char tile;
+    int next_x;
+    int next_y;
 
-    (*per)->movement += 1;
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/floor.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
-    next_tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50 - 1];
-    tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50];
-    if (next_tile == 'E')
-    {
-        if ((*per)->collect <= 0)
-            exit_the_dore(&per);
-    }
-    else if (next_tile != '1')
+    tfloor(per);
+    (*per)->movement++;
+    next_x = (*per)->x_person / 50 - 1;
+    next_y = (*per)->y_person / 50;
+    if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
+        exit_the_door(&per);
+    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
         (*per)->x_person -= 50;
         ft_counter_mouv(per);
     }
-    if (tile == 'C')
+    if ((*per)->map[(*per)->y_person / 50][(*per)->x_person / 50] == 'C')
         collected(&per);
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/left.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
+    id_left_right(per, 2);
 }
 
-void ft_upp(t_person **per)
+void ft_up(t_person **per)
 {
-    int w_img;
-    int h_img;
-    char next_tile;
-    char tile;
+    int next_x;
+    int next_y;
 
-    (*per)->movement += 1;
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/floor.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
-    next_tile = (*per)->map[(*per)->y_person / 50 - 1][(*per)->x_person / 50];
-    tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50];
-    if (next_tile == 'E')
-    {
-        if ((*per)->collect <= 0)
-            exit_the_dore(&per);
-    }
-    else if (next_tile != '1')
+    tfloor(per);
+    (*per)->movement++;
+    next_y = (*per)->y_person / 50 - 1;
+    next_x = (*per)->x_person / 50;
+    if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
+        exit_the_door(&per);
+    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
         (*per)->y_person -= 50;
         ft_counter_mouv(per);
     }
-    if (tile == 'C')
+    if ((*per)->map[(*per)->y_person / 50][(*per)->x_person / 50] == 'C')
         collected(&per);
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/upp.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
+    id_upp_down(per, 1);
 }
 
 void ft_down(t_person **per)
 {
-    int w_img;
-    int h_img;
-    char next_tile;
-    char tile;
 
-    (*per)->movement += 1;
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/floor.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
-    next_tile = (*per)->map[(*per)->y_person / 50 + 1][(*per)->x_person / 50];
-    tile = (*per)->map[(*per)->y_person / 50][(*per)->x_person / 50];
-    if (next_tile == 'E')
+    int     new_y;
+    char    tile;
+
+    new_y = (*per)->y_person + 50;
+    tile  = (*per)->map[new_y / 50][(*per)->x_person / 50];
+    tfloor(per);
+    if (tile == 'E' && (*per)->collect <= 0)
+       exit_the_door(&per);
+    else if (tile != '1' && tile != 'E')
     {
-        if ((*per)->collect <= 0)
-            exit_the_dore(&per);
-    }
-    else if (next_tile != '1')
-    {
-        (*per)->y_person += 50;
+        (*per)->y_person = new_y;
         ft_counter_mouv(per);
+        if (tile == 'C')
+            collected(&per);
     }
-    if (tile == 'C')
-        collected(&per);
-    (*per)->img = mlx_xpm_file_to_image((*per)->mlx, "./mandatory/xmp/face.xpm", &w_img, &h_img);
-    mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, (*per)->x_person, (*per)->y_person);
+    id_upp_down(per, 2);
 }

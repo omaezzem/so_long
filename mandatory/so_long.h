@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:34:33 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 22:17:48 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:33:10 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,28 @@ int		last_w_lines(char **line, int w);
 int		first_w_lines(char **line);
 void	add_to_map(t_person *per);
 void    image_to_map(char p, int x, int y, t_person **per);
-void    exit_the_dore(t_person ***per);
+void    exit_the_door(t_person ***per);
 void    ft_right(t_person **per);
 void    ft_left(t_person **per);
-void    ft_upp(t_person **per);
+void    ft_up(t_person **per);
 void    ft_down(t_person **per);
 void	collected(t_person ***per);
+void    id_upp_down(t_person **per, int id);
+void	tfloor(t_person **per);
+void    id_left_right(t_person **per, int id);
+void	open_door(t_person **per, int x, int y);
+void	eff_door(t_person **per);
+
+
+
+
+
+void	failed_init(void);
+void	invalid_map(void);
+void	failed_w(void);
+void	invalid_n_arg(void);
+int		n_ex(t_person *per);
+int		n_pl(t_person *per);
+int		n_co(t_person *per);
 
 #endif

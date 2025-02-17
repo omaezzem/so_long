@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:42:54 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/15 21:59:52 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:55:14 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	handling_keys(int keycode, t_person *per)
 	if (keycode == 2 || keycode == 124)
 		ft_right(&per);
 	else if (keycode == 13 || keycode == 126)
-		ft_upp(&per);
+		ft_up(&per);
 	else if (keycode == 1 || keycode == 125)
 		ft_down(&per);
 	else if (keycode == 0 || keycode == 123)
@@ -35,11 +35,26 @@ int	handling_keys(int keycode, t_person *per)
 		}
 		free(per->map);
 		mlx_destroy_window(per->mlx, per->window);
-		exit(1);
+		exit(0);
 	}
 	return (0);
 }
 
+int close_window(t_person *per)
+{
+	int i;
+
+	i = 0;
+	while (per->map[i])
+	{
+		free(per->map[i]);
+		i++;
+	}
+	free(per->map);
+	mlx_destroy_window((per)->mlx, (per)->window);
+	exit(0);
+	return (0);
+}
 void init_person(t_person *per)
 {
 	per->collect = 0;
@@ -53,10 +68,7 @@ int main(int ac, char **av)
 	t_person	per;
 
 	if (ac <= 1)
-	{
-		perror(RED "Error🛑: Invalid number of arguments.\n");
-		exit(1);
-	}
+		invalid_n_arg();
 	check_file_ber(av[1]);
 	per.map = lines_map(av[1]);
 	if (per.map != NULL)
@@ -65,18 +77,13 @@ int main(int ac, char **av)
 		init_person(&per);
 		per.mlx = mlx_init();
 		if (!per.mlx)
-		{
-    		write(2, "Error: Failed to initialize MLX\n", 32);
-   			exit(1);
-		} 
+			failed_init();
 		per.window = mlx_new_window(per.mlx, per.win_w * 50, per.win_h * 50, "SO_LONG");
 		if (!per.window)
-		{
-    		write(2, "Error: Failed to create window\n", 32);
-    		exit(1);
-		}
+			failed_w();
 		add_to_map(&per);
 		mlx_hook(per.window, 2, 0, handling_keys, &per);
+		mlx_hook(per.window, 17, 0, close_window, &per);
 	}
 	mlx_loop(per.mlx);
 }
