@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:34:33 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/17 19:33:10 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:38:37 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "gnl/get_next_line.h"
 
 # define PUR "\033[0;35m"
@@ -64,6 +65,7 @@ typedef struct s_person
 	t_enemy         e_vars;
 }           t_person;
 
+
 void	check_map(t_person *per);
 void	is_rectangular(t_person **per);
 void	check_between_walls(t_person **mapw);
@@ -85,7 +87,8 @@ void	tfloor(t_person **per);
 void    id_left_right(t_person **per, int id);
 void	open_door(t_person **per, int x, int y);
 void	eff_door(t_person **per);
-
+bool    flood_fill_exit(char **map, int x, int y, t_person *per);
+char	**copy(char **map, int width, int height);
 
 
 
@@ -97,5 +100,11 @@ void	invalid_n_arg(void);
 int		n_ex(t_person *per);
 int		n_pl(t_person *per);
 int		n_co(t_person *per);
+
+void    free_memory(t_person **per);
+void    free_str(char **per);
+void	free_map(char **map, int height);
+int		ft_x_person(char **map);
+int		ft_y_person(char **map);
 
 #endif

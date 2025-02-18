@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:51:21 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/17 15:43:56 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:39:27 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	check_map(t_person *per)
 	int e;
 	int p;
 	int c;
+	char **map;
 
 	e = n_ex(per);
 	p = n_pl(per);
@@ -60,4 +61,8 @@ void	check_map(t_person *per)
 		invalid_map();
 	is_rectangular(&per);
 	check_between_walls(&per);
+	map = copy((per)->map , per->win_w, per->win_h);
+	if ((flood_fill_exit(map,per->x_person ,per->y_person, per)) == false)
+		invalid_map();
+	free_map(map, per->win_h);
 }

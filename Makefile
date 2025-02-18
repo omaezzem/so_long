@@ -6,7 +6,7 @@
 #    By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 11:54:40 by omaezzem          #+#    #+#              #
-#    Updated: 2025/02/17 15:51:27 by omaezzem         ###   ########.fr        #
+#    Updated: 2025/02/18 22:42:01 by omaezzem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,12 @@ SRCS 	=	mandatory/so_long.c\
 			mandatory/utils/len_h.c\
 			mandatory/utils/split.c\
 			mandatory/src/get_lines.c\
+			mandatory/src/free_str.c\
+			mandatory/src/free_memory.c\
 			mandatory/src/xpm_to_img.c\
 			mandatory/src/mouvements.c\
 			mandatory/src/mvm_utilis.c\
+			mandatory/src/x_y_person.c\
 			mandatory/src/scan2.c\
 			mandatory/src/errors.c\
  			mandatory/src/walls.c\
