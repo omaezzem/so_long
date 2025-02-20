@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   walls.c                                            :+:      :+:    :+:   */
+/*   check_walls_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:32:01 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/13 17:12:24 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:50:10 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int		first_w_lines(char **line)
 {
@@ -45,7 +45,6 @@ void	ft_error_free(t_person ***fmap)
 		x++;
 	}
 	free((**fmap)->map);
-	ft_putstr_fd(RED "🛑ERROR: map is not surrounded by walls", 2);
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:50:47 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/13 17:12:03 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:39:01 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_er(void)
 {
-	ft_putstr_fd(RED "Error\n", 1);
+	ft_putstr_fd(RED "ERROR\n", 1);
 	exit(1);
 }
 

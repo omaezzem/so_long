@@ -6,23 +6,14 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:26:45 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/17 15:05:34 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:03:37 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	add_to_map(t_person *per)
+void	add_to_map_two(t_person *per, int x1, int x_map, int y1, int backup_w, int y_map)
 {
-	int	y1;
-	int	y_map;
-	int	backup_w;
-	int	x1;
-	int	x_map;
-
-	y1 = 0;
-	y_map = 0;
-	backup_w =	per->win_w;
 	while (per->win_h > 0)
 	{
 		x1 = 0;
@@ -40,4 +31,19 @@ void	add_to_map(t_person *per)
 		y1 += 50;
 		per->win_h--;
 	}
+}
+void	add_to_map(t_person *per)
+{
+	int	y1;
+	int	y_map;
+	int	backup_w;
+	int	x1;
+	int	x_map;
+
+	y1 = 0;
+	y_map = 0;
+	backup_w = per->win_w;
+	x_map = 0;
+	x1 = 0;
+	add_to_map_two(per, x1, x_map, y1, backup_w, y_map);
 }

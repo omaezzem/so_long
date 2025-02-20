@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:17:19 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/17 19:45:24 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:59:25 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void ft_right(t_person **per)
     int next_y;
 
     tfloor(per);
-    (*per)->movement++;
     next_x = (*per)->x_person / 50 + 1;
     next_y = (*per)->y_person / 50;
     if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
         exit_the_door(&per);
-    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E' )
+    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
+        (*per)->movement++;
         ft_counter_mouv(per);
         (*per)->x_person += 50;
     }
@@ -49,15 +49,15 @@ void ft_left(t_person **per)
     int next_y;
 
     tfloor(per);
-    (*per)->movement++;
     next_x = (*per)->x_person / 50 - 1;
     next_y = (*per)->y_person / 50;
     if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
         exit_the_door(&per);
     else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
-        (*per)->x_person -= 50;
+        (*per)->movement++;
         ft_counter_mouv(per);
+        (*per)->x_person -= 50;
     }
     if ((*per)->map[(*per)->y_person / 50][(*per)->x_person / 50] == 'C')
         collected(&per);
@@ -70,13 +70,13 @@ void ft_up(t_person **per)
     int next_y;
 
     tfloor(per);
-    (*per)->movement++;
     next_y = (*per)->y_person / 50 - 1;
     next_x = (*per)->x_person / 50;
     if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
         exit_the_door(&per);
     else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
+        (*per)->movement++;
         (*per)->y_person -= 50;
         ft_counter_mouv(per);
     }
@@ -88,20 +88,21 @@ void ft_up(t_person **per)
 void ft_down(t_person **per)
 {
 
-    int     new_y;
-    char    tile;
+    int next_x;
+    int next_y;
 
-    new_y = (*per)->y_person + 50;
-    tile  = (*per)->map[new_y / 50][(*per)->x_person / 50];
     tfloor(per);
-    if (tile == 'E' && (*per)->collect <= 0)
-       exit_the_door(&per);
-    else if (tile != '1' && tile != 'E')
+    next_y = (*per)->y_person / 50 + 1;
+    next_x = (*per)->x_person / 50;
+    if ((*per)->map[next_y][next_x] == 'E' && (*per)->collect <= 0)
+        exit_the_door(&per);
+    else if ((*per)->map[next_y][next_x] != '1' && (*per)->map[next_y][next_x] != 'E')
     {
-        (*per)->y_person = new_y;
+        (*per)->movement++;
+        (*per)->y_person += 50;
         ft_counter_mouv(per);
-        if (tile == 'C')
-            collected(&per);
     }
+    if ((*per)->map[(*per)->y_person / 50][(*per)->x_person / 50] == 'C')
+        collected(&per);
     id_upp_down(per, 2);
 }

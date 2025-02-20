@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:29:24 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/17 19:33:01 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:00:31 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	collected(t_person ***per)
 	int		img_h;
 
 	(**per)->collect--;
-    printf("c -> %d\n", (**per)->collect);
 	(**per)->map[((**per)->y_person / 50)][((**per)->x_person / 50)] = '0';
 	(**per)->img = mlx_xpm_file_to_image(
 			(**per)->mlx, "./mandatory/xmp/floor.xpm", &img_w, &img_h);
