@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:34:33 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 15:49:36 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:13:00 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			first_h_lines(char **h);
 int			last_w_lines(char **line, int w);
 int			first_w_lines(char **line);
 
-void		add_to_map(t_person *per, t_enemy *en);
+void		add_to_map(t_person *per);
 void		image_to_map(char p, int x, int y, t_person **per);
 void		exit_the_door(t_person ***per);
 void		ft_right(t_person **per);

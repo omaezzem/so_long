@@ -6,13 +6,13 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:26:45 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 15:49:07 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:12:51 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	add_to_map_two(t_person *per, int x1, int x_map, int y1, int backup_w, int y_map, t_enemy *en)
+void	add_to_map_two(t_person *per, int x1, int x_map, int y1, int backup_w, int y_map)
 {
 	while (per->win_h > 0)
 	{
@@ -21,7 +21,7 @@ void	add_to_map_two(t_person *per, int x1, int x_map, int y1, int backup_w, int 
 		while (per->win_w > 0)
 		{
 			if (per->map && per->map[y_map])
-                image_to_map(per->map[y_map][x_map], x1, y1, &per, &en);
+                image_to_map(per->map[y_map][x_map], x1, y1, &per);
 			x_map++;
 			x1 += 50;
 			per->win_w--;

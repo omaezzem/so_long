@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:06:39 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 13:54:24 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:19:08 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void put_image(t_person **per, int x, int y, char *img)
     mlx_put_image_to_window((*per)->mlx, (*per)->window, (*per)->img, x, y);
 }
 
-void    image_to_map(char p, int x, int y, t_person **per, t_enemy **en)
+void    image_to_map(char p, int x, int y, t_person **per)
 {
     if (p == '1')
         put_image(per, x, y, "./bonus/xmp_bonus/wall.xpm");
@@ -48,5 +48,5 @@ void    image_to_map(char p, int x, int y, t_person **per, t_enemy **en)
     else if (p == '0')
         put_image(per, x, y, "./bonus/xmp_bonus/floor.xpm");
     else if (p == 'E')
-        put_image(en, (*per)->enemy.x_enemy, (*per)->enemy.y_enemy, "./bonus/xmp_bonus/close.xpm");
+        put_image(per, x, y,"./bonus/xmp_bonus/close.xpm");
 }
