@@ -35,6 +35,7 @@ BSRC = bonus/so_long_bonus.c\
 		 bonus/utils_bonus/len_h.c\
 		 bonus/utils_bonus/split.c\
 		 bonus/src_bonus/get_lines_bonus.c\
+		 bonus/src_bonus/animate.c\
 		 bonus/src_bonus/free_memory_bonus.c\
 		 bonus/src_bonus/xpm_to_img_bonus.c\
 		 bonus/src_bonus/mouvements_bonus.c\

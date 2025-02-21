@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:42:54 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 13:58:33 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/21 18:49:45 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,23 @@ void init_person(t_person *per)
 	per->win_w = ft_strlen((*per).map[0]);
 	per->x_person = ft_x_person(per->map);
 	per->y_person = ft_y_person(per->map);
-}
-void	f()
-{
-	system("leaks so_long");
+	per->enemy.allow_to_move = 0;
+	per->enemy.direction = 1;
+	per->enemy.speed = 60;
+	per->enemy.tmp_x = 0;
+	per->enemy.sleep = 5;
+	per->enemy.x_enemy = ft_x_enemy(per->map);
+	per->enemy.y_enemy = ft_y_enemy(per->map);
+	printf("%d\n", per->enemy.x_enemy);
+	printf("%d\n", per->enemy.y_enemy);
+	per->enemy.imgs[0] = "./bonus/xmp_bonus/e1.xpm";
+	per->enemy.imgs[1] = "./bonus/xpm_bonus/e2.xpm";
 }
 
 int main(int ac, char **av)
 {
-	atexit(f);
+
 	t_person	per;
-	t_enemy		en;
 
 	if (ac <= 1)
 		invalid_n_arg();
@@ -92,9 +98,10 @@ int main(int ac, char **av)
 		per.window = mlx_new_window(per.mlx, per.win_w * 50, per.win_h * 50, "SO_LONG");
 		if (!per.window)
 			failed_w();
-		add_to_map(&per, &en);
+		add_to_map(&per);
 		mlx_hook(per.window, 2, 0, handling_keys, &per);
 		mlx_hook(per.window, 17, 0, close_window, &per);
+		mlx_loop_hook(per.mlx, animate, &per);
 	}
 	mlx_loop(per.mlx);
 	mlx_destroy_image(per.mlx, per.img);

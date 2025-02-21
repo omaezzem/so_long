@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:26:45 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 16:12:51 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:13:45 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	add_to_map_two(t_person *per, int x1, int x_map, int y1, int backup_w, int 
 		per->win_h--;
 	}
 }
+
 void	add_to_map(t_person *per)
 {
 	int	y1;

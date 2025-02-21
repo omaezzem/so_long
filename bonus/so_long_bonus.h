@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:34:33 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/20 16:13:00 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/21 18:05:40 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <mlx.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stddef.h>
 #include <stdbool.h>
 #include "gnl_bonus/get_next_line.h"
@@ -39,12 +40,12 @@ int			len_h(char **line);
 typedef struct s_enemy {
 	int		x_enemy;
 	int		y_enemy;
-	int		sign;
-	int		x;
-	int		path_to_move;
+	int		direction;
+	int		tmp_x;
+	int		allow_to_move;
 	int		sleep;
-	int		sleep_for_move;
-	char	*imgs[5];
+	int		speed;
+	char	*imgs[2];
 }	t_enemy;
 
 typedef struct s_person
@@ -83,11 +84,10 @@ void		collected(t_person ***per);
 void		id_upp_down(t_person **per, int id);
 void		id_left_right(t_person **per, int id);
 void		tfloor(t_person **per);
-void		open_door(t_person **per, int x, int y);
 bool		flood_fill_exit(char **map, int x, int y, t_person *per);
 int			flood_fill_collect(char **map, int x, int y, t_person *per);
 char		**copy(char **map, int width, int height);
-
+void		init_person(t_person *per);
 void		ft_error_free(t_person ***fmap);
 void		failed_init(void);
 void		invalid_map(void);
@@ -106,5 +106,11 @@ void	free_map(char **map, int height);
 int		ft_x_person(char **map);
 int		ft_y_person(char **map);
 void	ckeck_collectables(t_person *per);
+int		ft_y_enemy(char **map);
+int		ft_x_enemy(char **map);
+
+// bonus
+
+int    animate(t_person **per);
 
 #endif
