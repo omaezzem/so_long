@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:50:47 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/19 21:49:45 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:49:08 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,54 @@
 
 static void	ft_er(void)
 {
-	ft_putstr_fd(RED "ERROR\n", 1);
+	ft_putstr_fd("Error\nERROR\n", 1);
 	exit(1);
+}
+
+char	*read_all_lines(int fd)
+{
+	char	*line;
+	char	*all_lines;
+	int		len_org;
+	int		len_tmp;
+
+	all_lines = ft_strdup("");
+	line = get_next_line(fd);
+	while (line)
+	{
+		len_org = ft_strlen(all_lines);
+		len_tmp = ft_strlen(line);
+		if (line[0] == '\n' && len_org != len_tmp)
+		{
+			free(line);
+			free(all_lines);
+			invalid_map();
+		}
+		all_lines = ft_strjoin(all_lines, line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	return (all_lines);
 }
 
 char	**lines_map(char *file)
 {
-	char	*line;
-	char	*all_lines;
 	int		fd;
+	char	*all_lines;
 	char	**split_map;
 
-	line = "";
-	all_lines = ft_strdup("");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_er();
-	while (line)
-	{
-		line = get_next_line(fd);
-		if (line == NULL || line[0] == '\n')
-			break ;
-		all_lines = ft_strjoin(all_lines, line);
-		free(line);
-	}
-	free(line);
+	all_lines = read_all_lines(fd);
 	close(fd);
 	if (all_lines[0] == '\0')
+	{
+		free(all_lines);
 		ft_er();
+	}
 	split_map = ft_split(all_lines, '\n');
+	free(all_lines);
 	return (split_map);
 }

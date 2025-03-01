@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:27:32 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/19 21:46:44 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:22:21 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd (n + 48, fd);
 	}
 }
-

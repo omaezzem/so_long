@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 12:02:46 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/08 21:51:16 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:32:59 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strdup(char *s);
 int		len_malloc(char *line, int i);
 char	*read_line(int fd, char *line);
 char	*get_next_line(int fd);
-int     ft_strlen(char *s);
+int		ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *line, char *buff);
 char	*ft_extract_line(char *line);

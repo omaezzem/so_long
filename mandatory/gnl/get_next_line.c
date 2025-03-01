@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 12:10:48 by omaezzem          #+#    #+#             */
-/*   Updated: 2024/12/17 12:39:52 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:45:10 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*read_line(int fd, char *line)
 	if (!buffer)
 	{
 		free(buffer);
-		// free(line);
 		return (NULL);
 	}
 	bytes_reads = 1;

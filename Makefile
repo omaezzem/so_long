@@ -25,6 +25,7 @@ SRCS 	= mandatory/so_long.c\
 		  mandatory/src/check_file.c\
 		  mandatory/src/scan_map.c\
 		  mandatory/src/add_to_map.c\
+		  mandatory/src/check_size.c\
 		  mandatory/src/img.c\
 		  mandatory/gnl/get_next_line.c\
 		  mandatory/gnl/get_next_line_utils.c
@@ -34,9 +35,13 @@ BSRC = bonus/so_long_bonus.c\
 		 bonus/utils_bonus/ft_strlcpy.c\
 		 bonus/utils_bonus/len_h.c\
 		 bonus/utils_bonus/split.c\
+		 bonus/utils_bonus/strjoin.c\
+		 bonus/utils_bonus/strlcat.c\
+		 bonus/utils_bonus/ft_itoa.c\
 		 bonus/src_bonus/get_lines_bonus.c\
 		 bonus/src_bonus/animate.c\
 		 bonus/src_bonus/free_memory_bonus.c\
+		 bonus/src_bonus/put_txt.c\
 		 bonus/src_bonus/xpm_to_img_bonus.c\
 		 bonus/src_bonus/mouvements_bonus.c\
 		 bonus/src_bonus/mvm_utilis_bonus.c\
@@ -46,10 +51,12 @@ BSRC = bonus/so_long_bonus.c\
 		 bonus/src_bonus/errors2_bonus.c\
 		 bonus/src_bonus/n_elements_bonus.c\
 		 bonus/src_bonus/check_walls_bonus.c\
+		 bonus/src_bonus/check_map_sizeb.c\
 		 bonus/src_bonus/check_file_bonus.c\
 		 bonus/src_bonus/scan_map_bonus.c\
 		 bonus/src_bonus/add_to_map_bonus.c\
 		 bonus/src_bonus/img_bonus.c\
+		 bonus/src_bonus/render_mlx.c\
 		 bonus/gnl_bonus/get_next_line.c\
 		 bonus/gnl_bonus/get_next_line_utils.c
 
@@ -61,8 +68,8 @@ BOBJS   = $(BSRC:.c=.o)
 $(NAME) : $(OBJS)
 	@$(CC) -lmlx -framework OpenGL -framework AppKit  $^ -o $@
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c mandatory/so_long.h  bonus/so_long_bonus.h bonus/gnl_bonus/get_next_line.h mandatory/gnl/get_next_line.h
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 bonus: $(NAME_BONUS)
 

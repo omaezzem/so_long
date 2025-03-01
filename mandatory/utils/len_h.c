@@ -6,17 +6,18 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 19:05:44 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/10 20:33:29 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:46:11 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int len_h(char **line)
+int	len_h(char **line)
 {
-    int i = 0;
-    while (line[i])
-        i++;
-    return i;
-}
+	int	i;
 
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
+}

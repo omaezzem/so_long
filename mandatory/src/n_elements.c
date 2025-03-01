@@ -6,7 +6,7 @@
 /*   By: omaezzem <omaezzem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:41:17 by omaezzem          #+#    #+#             */
-/*   Updated: 2025/02/19 17:42:49 by omaezzem         ###   ########.fr       */
+/*   Updated: 2025/02/26 00:09:35 by omaezzem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,29 @@ int	check_elements(t_person *per, char c)
 		}
 		y1++;
 	}
-	return len;
+	return (len);
 }
 
-int  n_ex(t_person *per)
+int	n_ex(t_person *per)
 {
-	int i;
+	int	i;
+
 	i = check_elements(per, 'E');
-	return i;
+	return (i);
 }
 
-int n_pl(t_person *per)
+int	n_pl(t_person *per)
 {
-	int i;
+	int	i;
+
 	i = check_elements(per, 'P');
-	return i;
+	return (i);
 }
 
-int n_co(t_person *per)
+int	n_co(t_person *per)
 {
-	int i;
+	int	i;
+
 	i = check_elements(per, 'C');
-	return i;
+	return (i);
 }
